@@ -10,6 +10,7 @@ You will need Bun installed and a Cloudflare account.
 
 1. Create a repo with this as a template and clone it locally
 1. Edit branding.json to add a description, title and possible change the format used png is used by default and gifs will stay gifs (png,webp,jpg) are all accepted formats
+1. Delete data.json and empty the images folder
 1. Drop images into the images folder
 1. (optional) Run `bun run src/build.ts` this will create a `data.json` file in which you can tag images and change the output name.
 1. Go to Cloudflare to the [pages tab](https://dash.cloudflare.com/?to=/:account/workers-and-pages) click create new application
