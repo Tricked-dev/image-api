@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "build": "bun src/build.ts",
+    "build": "sh build.sh",
     "start": "bun wrangler pages dev dist"
   },
   "devDependencies": {
