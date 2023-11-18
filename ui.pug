@@ -1,0 +1,76 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Borzoi API Documentation
+  body
+    header
+      h1 Borzoi API Documentation
+
+    section
+      h2 API Endpoints
+
+      ul
+        li
+          strong Base URL:
+          | #{endPoints.base}
+        li
+          strong Random Image:
+          a(href=`${endPoints.base + endPoints.random}?count=1`) #{endPoints.base + endPoints.random}
+        li
+          strong Images by Tag:
+          a(href=`${endPoints.base + endPoints.random}?tag=${tags[0]}`) #{endPoints.base + endPoints.random}?tag=#{tags[0]}
+        li
+          strong Image by Name:
+          | #{endPoints.fromName}
+
+    section
+      h2 Usage Information
+
+      p The API supports the following query parameters for images and tags:
+      ul
+        li
+          strong count (up to 5):
+          | You can specify the number of images with the count parameter, e.g., #{endPoints.base + endPoints.random}?count=3.
+          | This will make it return a array of json with image names which you can then use for the static #{endPoints.fromName} endpoint
+        li
+          strong tag:
+          | You can filter images by a single tag using the tag parameter, e.g., #{endPoints.base + endPoints.tag}?tag=#{tags[0]}.
+        li
+          strong Combine multiple tags:
+          | You can combine multiple tags with a +, e.g., #{endPoints.base + endPoints.random}?#{tags[0]}=#{tags[1]}+#{tags[2]}.
+        li
+          strong Image by Tag:
+          | You can filter images by tags using the tag parameter with /image, e.g., #{endPoints.base + endPoints.random}?tag=#{tags[0]}+#{tags[1]}+#{tags[2]}.
+
+    section
+      h2 Open URL with Tag and List of Tags
+
+      p To open a URL with a specific tag and list of tags, use the following format:
+      code #{endPoints.base + endPoints.random}?tag=yourtag&list=tag1+tag2
+
+    section
+      h2 Sample Image
+
+      p Get a glimpse of the Borzoi images from the API:
+      img(src=`${endPoints.base + endPoints.random}`, alt="Borzoi Image")
+
+    section
+      h2 Tags and Tag Count
+
+      p
+        | Tags:
+        each tag in tags
+          a(href=`${endPoints.base + endPoints.random}?tag=${tag}`) #{tag}
+          if !($index === tags.length - 1)
+            | ,
+      p
+        | Theres also a api endpoint to get all the tags here
+        a(href=`${endPoints.base + endPoints.tags}`) #{endPoints.base + endPoints.tags}
+      p
+        | Tag Count: #{tags.length}
+
+    footer
+      p
+        | Total Number of Images: #{count}
