@@ -97,6 +97,9 @@ html(lang="en")
           | #{endPoints.base}
         li
           strong Random Image:
+          a(href=`${endPoints.base + endPoints.random}`) #{endPoints.base + endPoints.random}
+        li
+          strong Random Image (JSON):
           a(href=`${endPoints.base + endPoints.random}?count=1`) #{endPoints.base + endPoints.random}
         li
           strong Images by Tag:
