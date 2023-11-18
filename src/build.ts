@@ -75,9 +75,7 @@ for (const file of files) {
     })
 }
 
-await fs.cp(".cache/images", "./dist/images", {
-    recursive: true
-})
+
 
 for (const d of data) {
     if (!await fs.exists(`./images/${d.originalName}`)) {
@@ -95,6 +93,10 @@ for (const d of data) {
         await applySharp(`images/${d.originalName}`);
     }
 }
+
+await fs.cp(".cache/images", "./dist/images", {
+    recursive: true
+})
 
 await fs.writeFile("./data.json", JSON.stringify(data, undefined, 2), {
     encoding: "utf8"
