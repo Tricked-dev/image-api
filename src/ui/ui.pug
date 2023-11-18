@@ -3,17 +3,17 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Borzoi API Documentation
+    title #{branding.name} API Documentation
 
-    meta(name="description", content="A cool api for getting borzoi images")
-    meta(name="keywords", content="borzoi,api,documentation")
-    meta(name="author", content="Your Name")
+    meta(name="description", content=`${branding.description}`)
+    meta(name="keywords", content=`${branding.name},api,documentation`)
+    meta(name="author", content="Tricked-dev")
     meta(name="robots", content="index, follow")
 
     meta(name="twitter:card", content="summary")
     meta(name="twitter:site", content="@trickeddev")
-    meta(name="twitter:title", content="Borzoi API Documentation")
-    meta(name="twitter:description", content="A cool api for getting borzoi images")
+    meta(name="twitter:title", content=`${branding.name} API Documentation`)
+    meta(name="twitter:description", content=`${branding.description}`)
     meta(name="twitter:image", content="/api/image")
 
     style.
@@ -86,7 +86,7 @@ html(lang="en")
       }
   body
     header
-      h1 Borzoi API Documentation
+      h1 #{branding.name} API Documentation
 
     section
       h2 API Endpoints
@@ -136,8 +136,8 @@ html(lang="en")
     section
       h2 Sample Image
 
-      p Get a glimpse of the Borzoi images from the API:
-      img(src=`${endPoints.base + endPoints.random}`, alt="Borzoi Image" style="max-width: 200px; height: auto; display: block; margin: 1em 0;")
+      p Get a glimpse of the #{branding.name} images from the API:
+      img(src=`${endPoints.base + endPoints.random}`, alt=`${branding.name} Image` style="max-width: 200px; height: auto; display: block; margin: 1em 0;")
 
     section
       h2 Tags and Tag Count

@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "build": "bun build.ts",
+    "build": "bun src/build.ts",
     "start": "bun wrangler pages dev dist"
   },
   "devDependencies": {
@@ -15,6 +15,10 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "pug": "^3.0.2"
-  }
+    "pug": "^3.0.2",
+    "sharp": "^0.32.6"
+  },
+  "trustedDependencies": [
+    "sharp"
+  ]
 }

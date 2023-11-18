@@ -1,0 +1,6 @@
+{
+  "name": "Borzoi",
+  "description": "A cool api for getting borzoi images",
+  "limit": 5,
+  "format": "png"
+}

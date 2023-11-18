@@ -1,7 +1,11 @@
-import data from "./data.json"
-import { parseTags } from "./utils"
+import { limit } from "../../branding.json"
+import { getDataForImage } from "../data" assert { type: "macro" }
+import { parseTags } from "../utils"
 
-export async function onRequest({ request, env }) {
+// makes it so bun doesn't inline it twice
+const data = [...getDataForImage()]
+
+export async function onRequest({ request }: { request: Request }) {
     const search = new URL(request.url).searchParams
     const tags = search.get("tags")
     const count = parseInt(search.get("count") ?? "-");
@@ -11,11 +15,11 @@ export async function onRequest({ request, env }) {
         return new Response(undefined, {
             status: 302,
             headers: {
-                Location: `/images/${image?.name}`
+                Location: `/images/${image![0]}`
             }
         })
     } else {
-        if (count > 5) {
+        if (count > limit) {
             return new Response("Too many", {
                 status: 400,
                 headers: {
@@ -24,7 +28,7 @@ export async function onRequest({ request, env }) {
             })
         }
         let res = new Array(count).fill(0).map(() => getImage(tags?.split("+") ?? []));
-        return new Response(JSON.stringify([...new Set(res.map(x => x?.name))]), {
+        return new Response(JSON.stringify([...new Set(res.map(x => x![0]))]), {
             headers: {
                 "Content-Type": "application/json"
             }
@@ -37,7 +41,7 @@ function getImage(tags: string[]) {
         return getRandomElement(data)
     }
     const correctArray = data.filter(x => {
-        const parsedTags = parseTags(x.tags)
+        const parsedTags = parseTags(x[1])
         for (const tag of tags) {
             if (!parsedTags.includes(tag)) {
                 return false
