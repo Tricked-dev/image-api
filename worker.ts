@@ -23,8 +23,8 @@ export async function onRequest({ request, env }) {
                 }
             })
         }
-        let data = new Array(count).fill(0).map(() => getImage(tags?.split("+") ?? []));
-        return new Response(JSON.stringify(data.map(x => x?.name)), {
+        let res = new Array(count).fill(0).map(() => getImage(tags?.split("+") ?? []));
+        return new Response(JSON.stringify([...new Set(res.map(x => x?.name))]), {
             headers: {
                 "Content-Type": "application/json"
             }
