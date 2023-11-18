@@ -1,5 +1,7 @@
 import { compileFile } from "pug"
 import fs from "fs/promises";
+import { parseTags } from "./utils";
+
 await fs.rm("./dist", {
     recursive: true
 })
@@ -61,7 +63,7 @@ await fs.writeFile("./data.json", JSON.stringify(data, undefined, 2), {
 
 function generatePugData() {
     const tags = new Set(
-        data.flatMap(x => x.tags.split(/,| /g).filter(x => x))
+        data.flatMap((x) => parseTags(x.tags))
     )
 
     const base = "/api"
@@ -81,10 +83,20 @@ function generatePugData() {
     }
 }
 
-const ui = compileFile("ui.pug", {
-    pretty: true,
-})(generatePugData())
+const ui = compileFile("ui.pug")(generatePugData())
 
 await fs.writeFile("dist/index.html", ui, {
     encoding: "utf8"
+})
+
+await fs.writeFile("dist/404.html", compileFile("404.pug")(), {
+    encoding: "utf8"
+})
+
+Bun.build({
+    entrypoints: ["worker.ts"],
+    outdir: "functions/api/",
+    minify: true,
+    naming: "image.js",
+    format: "esm",
 })

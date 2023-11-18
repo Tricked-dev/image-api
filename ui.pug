@@ -84,7 +84,6 @@ html(lang="en")
         background-color: #4285f4;
         color: #fff;
       }
-    title Borzoi API Documentation
   body
     header
       h1 Borzoi API Documentation
@@ -117,10 +116,10 @@ html(lang="en")
           | This will make it return an array of JSON with image names which you can then use for the static #{endPoints.fromName} endpoint
         li
           strong tag:
-          | You can filter images by a single tag using the tag parameter, e.g., #{endPoints.base + endPoints.tag}?tag=#{tags[0]}.
+          | You can filter images by a single tag using the tag parameter, e.g., #{endPoints.base + endPoints.random}?tag=#{tags[0]}.
         li
           strong Combine multiple tags:
-          | You can combine multiple tags with a +, e.g., #{endPoints.base + endPoints.random}?#{tags[0]}=#{tags[1]}+#{tags[2]}.
+          | You can combine multiple tags with a +, e.g., #{endPoints.base + endPoints.random}?tag=#{tags[0]}+#{tags[1]}+#{tags[2]}.
         li
           strong Image by Tag:
           | You can filter images by tags using the tag parameter with /image, e.g., #{endPoints.base + endPoints.random}?tag=#{tags[0]}+#{tags[1]}+#{tags[2]}.
@@ -129,13 +128,13 @@ html(lang="en")
       h2 Open URL with Tag and List of Tags
 
       p To open a URL with a specific tag and list of tags, use the following format:
-      code #{endPoints.base + endPoints.random}?tag=yourtag&list=tag1+tag2
+      code #{endPoints.base + endPoints.random}?tag=#{tags[0]}
 
     section
       h2 Sample Image
 
       p Get a glimpse of the Borzoi images from the API:
-      img(src=`${endPoints.base + endPoints.random}`, alt="Borzoi Image")
+      img(src=`${endPoints.base + endPoints.random}`, alt="Borzoi Image" style="max-width: 200px; height: auto; display: block; margin: 1em 0;")
 
     section
       h2 Tags and Tag Count
