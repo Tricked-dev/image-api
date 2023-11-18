@@ -4,6 +4,71 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Borzoi API Documentation
+    style.
+      body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+
+      header {
+        background-color: #4285f4;
+        color: #fff;
+        padding: 1em;
+        text-align: center;
+      }
+
+      section {
+        background-color: #fff;
+        margin: 1em;
+        padding: 1em;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1, h2, h3 {
+        color: #4285f4;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 0.5em;
+      }
+
+      code {
+        background-color: #f8f8f8;
+        padding: 0.2em;
+        border-radius: 3px;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 1em 0;
+      }
+
+      a {
+        color: #4285f4;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 2em;
+        padding: 1em;
+        background-color: #4285f4;
+        color: #fff;
+      }
+    title Borzoi API Documentation
   body
     header
       h1 Borzoi API Documentation
@@ -33,7 +98,7 @@ html(lang="en")
         li
           strong count (up to 5):
           | You can specify the number of images with the count parameter, e.g., #{endPoints.base + endPoints.random}?count=3.
-          | This will make it return a array of json with image names which you can then use for the static #{endPoints.fromName} endpoint
+          | This will make it return an array of JSON with image names which you can then use for the static #{endPoints.fromName} endpoint
         li
           strong tag:
           | You can filter images by a single tag using the tag parameter, e.g., #{endPoints.base + endPoints.tag}?tag=#{tags[0]}.
@@ -66,7 +131,7 @@ html(lang="en")
           if !($index === tags.length - 1)
             | ,
       p
-        | Theres also a api endpoint to get all the tags here
+        | There's also an API endpoint to get all the tags here
         a(href=`${endPoints.base + endPoints.tags}`) #{endPoints.base + endPoints.tags}
       p
         | Tag Count: #{tags.length}
