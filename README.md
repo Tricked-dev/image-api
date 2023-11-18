@@ -2,6 +2,8 @@
 
 Create a api for images with [Cloudflare pages](https://pages.cloudflare.com) and [Bun](https://bun.sh/).
 
+Live demo <https://borzoi-1am.pages.dev/>
+
 ## Getting started
 
 You will need Bun installed and a Cloudflare account.
@@ -30,3 +32,13 @@ And doing `bun i` again
 ## Customizing
 
 You can customize the look and stuff by editing the pug templates inside `src/ui`
+
+## Contributing
+
+Feel free to add new borzoi's for this kind of demo but also borzoi api!
+
+Any pull requests are welcome! even if its as small as fixing typos or as big as redesign!
+
+## License
+
+MIT
